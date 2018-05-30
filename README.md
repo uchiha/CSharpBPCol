@@ -89,3 +89,18 @@ The case for generics in this codebase looked like...
 
       return value;
   }
+- Generic constraints allow us to limit the types that can be used with our generic types.
+  The following are the generic constraints
+  # Generic Constraints #								# Constraints T to #
+   where T : struct										 Value type
+   where T : class										 Reference Types
+   where T : new()										 Type with parameterless constructor
+   where T : Vendor										 Be or derive from Vendor (Vendor should be instantiable and can be inherited from)
+   where T : IVendor									 Be or implement the IVendor interface
+- an example of generic constraint in a class
+  -----> public class OperationResult<T> where T: struct
+  the generic constraint is applied by adding a where clause at the end of the signature. THe value after the where keyword is the generic type parameter name, then a colon then the constraint. THe struct keyword limits the generic type arguments to value types such as in or bool.
+- if a generic type parameter has multiple constraints, separate them with commas
+  -----> public T Populate<T>(string sql) where T : class, new()
+- if there are multiple generic parameters with constraints, add multiple where clauses
+  -----> public T RetrieveValue<T, V>(string sql, V parameter)where T: struct where V: struct
