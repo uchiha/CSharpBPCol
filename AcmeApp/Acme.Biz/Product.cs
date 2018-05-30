@@ -103,7 +103,7 @@ namespace Acme.Biz
         /// <returns></returns>
         //public decimal CalculateSuggestedPrice(decimal markupPercent) => // new c#6 expression-bodied syntax. Allows method definition
         //     this.Cost + (this.Cost * markupPercent / 100);              // in a single code line.
-        public OperationResultDecimal CalculateSuggestedPrice(decimal markupPercent)
+        public OperationResult<decimal> CalculateSuggestedPrice(decimal markupPercent)
         {
             var message = "";
             if (markupPercent <= 0m)
@@ -115,7 +115,7 @@ namespace Acme.Biz
                 message = "Below recommended markup percentage";
             }
             var value = this.Cost + (this.Cost * markupPercent / 100);
-            var operationalRes = new OperationResultDecimal(value, message);
+            var operationalRes = new OperationResult<decimal>(value, message);
             return operationalRes;
         }
         public override string ToString()

@@ -55,3 +55,15 @@ The case for generics in this codebase looked like...
 - the problem now? We have to OperationalResult classes. One that returns a bool and string and another that returns decima and string. But what if we need another return type? Will we create a new very similar OperationalResult class?
 - this breaks the [D]on't [R]epeat [Y]ourself principle.
 - it would be nice if the datatype that was needed to be returned would have been a variable. And we can use OperationResult class to return any of our desired type??
+- that path would lead to a lot of duplicated code...
+- the solution is to use Generics, to build a single reusable OperationResult class that will work on any datatype.
+- first, instead of Success, rename to Result (the Success property of OperationResult class) so its more applicable in any data type.
+  2nd, change the return type of Result from boolean to T. T is a convention to represent "that" type variable. This is called the generic type. By using this we can reuse this property to return a string, bool or whatever. This will be an error, because we are using "T" but havent defined it. We need to define this.
+  3rd define it in the class signature as in...
+  -----> public class OperationResult<t>
+  <T> is called type parameter and syntax is read as "public class OperationResult of T". THis is now a generic class.
+  4th, the argument type in the 2nd constructor should be changed also from bool to T:
+  -----> public OperationResult(T result, string message) : this()
+  NOW ITS A COMPLETE GENERIC CLASS!
+- at this point, there was a lot of changes in the classes in the test project etc to use generic class..
+- we, at this point, created a generic class and property ONLY!
