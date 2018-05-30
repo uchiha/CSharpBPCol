@@ -42,5 +42,14 @@ namespace Acme.Biz
 
             return success;
         }
+
+        public T RetrieveValue<T>(string sql, T defaultValue)
+        {
+            // call the db to retrieve the value
+            // if no value returned, return the default value
+            T value = defaultValue;
+
+            return value;
+        }
     }
 }

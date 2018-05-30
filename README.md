@@ -67,3 +67,25 @@ The case for generics in this codebase looked like...
   NOW ITS A COMPLETE GENERIC CLASS!
 - at this point, there was a lot of changes in the classes in the test project etc to use generic class..
 - we, at this point, created a generic class and property ONLY!
+
+[31052018]
+- Generic methods can also be defined.
+- basically:
+  <DO>
+  -> use generics to build  reusable type-neutral methods.
+  -> Use T as the type parameter for methods with one type parameter.
+  -> Prefix descriptive type parameter names with T e.g. TReturn or TParameter
+  -> Define the type parameter(s) on the method signature. 
+  <DON'T>
+  -> use generics when not needed (when you are certain that the method will never be used with other data types). Using them unnecessarily will cause confusion and hard to find bugs.
+  -> use single letter type parameter names when there are multiple types to be declared.
+- example is the RetrieveValue method in VendorRepository.cs class file. It has has a return type of "T" and one of the parameters has a type of "T" as well:
+  ----->
+  public T RetrieveValue<T>(string sql, T defaultValue)
+  {
+     // call the db to retrieve the value
+     // if no value returned, return the default value
+      T value = defaultValue;
+
+      return value;
+  }
