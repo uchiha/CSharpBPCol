@@ -116,3 +116,7 @@ The case for generics in this codebase looked like...
   -> if possible remove elements. Remove is slow. It first does a sequential search for the element before it can remove it. If you need many inserts and removal, consider a different type of list, such as a linked list.
 - just use list initializer syntax:
   -----> var colorOptions = new List<string>() {"Red", "Espresso", "White", "Navy"};
+- in this new commit, in the initialize a list of objects, we have the following changes
+  VendorRepository.cs - we've set a variable that will hold a list of Vendor objects (generic)
+                      - we've created a method that will give the user a list of instantiated list of Vendor Objects.
+  VendorRepositoryTests.cs - a simple test that will check the count.
