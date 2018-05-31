@@ -44,12 +44,12 @@ namespace Acme.Biz
                             "Quantity: " + quantity);
             if (deliverBy.HasValue)
             {
-                orderTextBuilder.Append( System.Environment.NewLine +
+                orderTextBuilder.Append(System.Environment.NewLine +
                             "Deliver By: " + deliverBy.Value.ToString("d"));
             }
             if (!String.IsNullOrWhiteSpace(instructions))
             {
-                orderTextBuilder.Append( System.Environment.NewLine +
+                orderTextBuilder.Append(System.Environment.NewLine +
                             "Instructions: " + instructions);
             }
             var orderText = orderTextBuilder.ToString();
@@ -84,5 +84,30 @@ namespace Acme.Biz
                                                         this.Email);
             return confirmation;
         }
+
+        public override bool Equals(object obj) //<== we override Equals which takes in an obj.
+        {
+            // we check weather the passed in object is in fact null and if it
+            // is of the appropriate type
+            if (obj == null || this.GetType() != obj.GetType())
+                return false;
+
+            Vendor compareVendor = obj as Vendor; //<== we use the "as" operator to cast the obj to a Vendor type.
+
+            // here we set the category of equality, we check if its null
+            // and if every property is the same.
+            if (compareVendor != null && this.VendorId == compareVendor.VendorId
+                && this.CompanyName == compareVendor.CompanyName
+                && this.Email == compareVendor.Email)
+                return true;
+
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        
     }
 }

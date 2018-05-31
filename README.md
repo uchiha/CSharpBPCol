@@ -122,3 +122,5 @@ The case for generics in this codebase looked like...
   VendorRepositoryTests.cs - a simple test that will check the count.
 - we can improve by checking the actual objects.
 - at this point, the test will fail because the unit testing does not know how to determine if our vendor instances are equal. Are they equal if the id is matched? Do all the fields need to match? How does the unit test know what constitutes equality??
+- solution is to explicitly define how two vendor objects will match. Override the Equals method in the vendor class.
+- check out the changes at Vendor.cs. Note that this code will make a warning due to overriding of Equals, thus a very simple override method for GetHashCode is made.
