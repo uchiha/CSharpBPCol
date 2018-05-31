@@ -104,3 +104,15 @@ The case for generics in this codebase looked like...
   -----> public T Populate<T>(string sql) where T : class, new()
 - if there are multiple generic parameters with constraints, add multiple where clauses
   -----> public T RetrieveValue<T, V>(string sql, V parameter)where T: struct where V: struct
+  
+/* Generic Lists */
+- Bottom line: Generic lists is the BEST CHOICE for managing an in-memory collection of elements! Its flexibility makes it easy to work with! ONLY use an array if you need MULTIPLE DIMENSION or to squeeze out a bit more performance WHEN WORKING WITH A LARGE FIXED NUMBER OF ELEMENTS.
+- List best practice:
+  <DO>
+  -> use generic lists to manage collection
+  -> use Add over Insert if possible
+  -> use plural variable name for the lists
+  <DON'T>
+  -> if possible remove elements. Remove is slow. It first does a sequential search for the element before it can remove it. If you need many inserts and removal, consider a different type of list, such as a linked list.
+- just use list initializer syntax:
+  -----> var colorOptions = new List<string>() {"Red", "Espresso", "White", "Navy"};

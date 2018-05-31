@@ -16,6 +16,7 @@ namespace Acme.Biz
         #region Constructors
         public Product()
         {
+            /* these are the array stuff
             string[] colorOptions = { "Red", "Espresso", "White", "Navy" };
             // some static array methods
             var brownIndex = Array.IndexOf(colorOptions, "Espresso");
@@ -33,6 +34,18 @@ namespace Acme.Biz
                 
                 Console.WriteLine($"The color is {color}");
             }
+            */
+
+            //var colorOptions = new List<string>();
+            //colorOptions.Add("Red");
+            //colorOptions.Add("Espresso");
+            //colorOptions.Add("White");
+            //colorOptions.Add("Navy");
+            //colorOptions.Insert(2, "Purple");
+            //colorOptions.Remove("White");
+
+            var colorOptions = new List<string>() {"Red", "Espresso", "White", "Navy"};
+            Console.WriteLine(colorOptions);
         }
         public Product(int productId,
                         string productName,
