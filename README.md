@@ -120,3 +120,5 @@ The case for generics in this codebase looked like...
   VendorRepository.cs - we've set a variable that will hold a list of Vendor objects (generic)
                       - we've created a method that will give the user a list of instantiated list of Vendor Objects.
   VendorRepositoryTests.cs - a simple test that will check the count.
+- we can improve by checking the actual objects.
+- at this point, the test will fail because the unit testing does not know how to determine if our vendor instances are equal. Are they equal if the id is matched? Do all the fields need to match? How does the unit test know what constitutes equality??

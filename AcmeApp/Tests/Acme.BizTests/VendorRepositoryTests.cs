@@ -44,13 +44,15 @@ namespace Acme.Biz.Tests
         {
             //Arrange
             var repository = new VendorRepository();
-            var expected = 2;
+            var expected = new List<Vendor>();
+            expected.Add(new Vendor() { VendorId = 1, CompanyName = "ABC Corp", Email = "abc@abc.com" });
+            expected.Add(new Vendor() { VendorId = 2, CompanyName = "XYZ Inc", Email = "xyz@xyz.com" });
 
             //Act
             var actual = repository.Retrieve();
 
             //Assert
-            Assert.AreEqual(expected, actual.Count);
+            CollectionAssert.AreEqual(expected, actual);
         }
     }
 }
